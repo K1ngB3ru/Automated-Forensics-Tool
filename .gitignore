@@ -65,6 +65,7 @@ desktop.ini
 
 # IDE
 .vscode/
+.cursor/
 .idea/
 *.swp
 *.swo
