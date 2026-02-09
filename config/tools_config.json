@@ -1,0 +1,299 @@
+{
+  "project_info": {
+    "name": "Malware Analysis & Forensic Tool Automation",
+    "version": "1.0",
+    "author": "MetaProbe Team",
+    "description": "Automated deployment and execution of forensic tools for malware analysis"
+  },
+  
+  "environment": {
+    "target_os": "windows",
+    "python_version": "3.10+",
+    "required_privileges": "administrator",
+    "vm_recommended": true
+  },
+  
+  "tools": {
+    "memory_analysis": {
+      "volatility3": {
+        "install_method": "pip",
+        "package_name": "volatility3",
+        "description": "Advanced memory forensics framework",
+        "priority": "high",
+        "commands": {
+          "verify": "python -m volatility3 --help",
+          "common_usage": "python -m volatility3 -f memory.dump windows.pslist"
+        }
+      },
+      "winpmem": {
+        "url": "https://github.com/Velocidex/WinPmem/releases/download/v4.0.rc1/winpmem_mini_x64_rc2.exe",
+        "install_method": "portable",
+        "description": "Physical memory acquisition tool",
+        "priority": "high",
+        "commands": {
+          "acquire_memory": "winpmem_mini_x64_rc2.exe memory.raw"
+        }
+      }
+    },
+    
+    "network_analysis": {
+      "wireshark": {
+        "url": "https://2.na.dl.wireshark.org/win64/Wireshark-win64-latest.exe",
+        "install_method": "installer",
+        "silent_args": "/S /quicklaunchicon=no /desktopicon=no",
+        "description": "Network protocol analyzer",
+        "priority": "high",
+        "commands": {
+          "capture": "tshark -i 1 -w capture.pcap -a duration:60",
+          "read": "tshark -r capture.pcap",
+          "filter": "tshark -r capture.pcap -Y 'http'"
+        }
+      },
+      "tcpdump": {
+        "install_method": "bundled_with_wireshark",
+        "description": "Command-line packet analyzer",
+        "priority": "medium",
+        "commands": {
+          "capture": "tcpdump -i eth0 -w capture.pcap"
+        }
+      }
+    },
+    
+    "process_analysis": {
+      "sysinternals_suite": {
+        "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip",
+        "install_method": "zip",
+        "description": "Suite of Windows system utilities",
+        "priority": "high",
+        "tools": {
+          "procmon": {
+            "description": "Process Monitor - monitors system calls",
+            "commands": {
+              "start": "procmon.exe /BackingFile procmon.pml /Quiet",
+              "stop": "procmon.exe /Terminate"
+            }
+          },
+          "procexp": {
+            "description": "Process Explorer - advanced task manager",
+            "commands": {
+              "start": "procexp.exe"
+            }
+          },
+          "autoruns": {
+            "description": "Shows programs configured to run at startup",
+            "commands": {
+              "export": "autorunsc.exe -a * -c > autoruns.csv"
+            }
+          },
+          "tcpview": {
+            "description": "Shows detailed network connections",
+            "commands": {
+              "start": "tcpview.exe"
+            }
+          }
+        }
+      },
+      "process_hacker": {
+        "url": "https://github.com/processhacker/processhacker/releases/download/v2.39/processhacker-2.39-setup.exe",
+        "install_method": "installer",
+        "description": "Advanced process monitoring tool",
+        "priority": "medium"
+      }
+    },
+    
+    "debugging_disassembly": {
+      "ghidra": {
+        "url": "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.4_build/ghidra_10.4_PUBLIC_20230928.zip",
+        "install_method": "zip",
+        "description": "NSA's reverse engineering framework",
+        "priority": "high",
+        "requirements": "Java 17+",
+        "commands": {
+          "headless_analysis": "analyzeHeadless <project_location> <project_name> -import <file>"
+        }
+      },
+      "x64dbg": {
+        "url": "https://github.com/x64dbg/x64dbg/releases/latest/download/snapshot.zip",
+        "install_method": "zip",
+        "description": "Open-source x64/x32 debugger",
+        "priority": "medium"
+      },
+      "ida_free": {
+        "url": "https://out7.hex-rays.com/files/idafree83_windows.exe",
+        "install_method": "installer",
+        "description": "IDA Free version disassembler",
+        "priority": "medium",
+        "note": "Requires manual download and license acceptance"
+      },
+      "radare2": {
+        "url": "https://github.com/radareorg/radare2",
+        "install_method": "source",
+        "description": "Unix-like reverse engineering framework",
+        "priority": "medium"
+      }
+    },
+    
+    "file_analysis": {
+      "pestudio": {
+        "url": "https://www.winitor.com/download",
+        "install_method": "portable",
+        "description": "Static malware analysis tool",
+        "priority": "high"
+      },
+      "exiftool": {
+        "url": "https://exiftool.org/exiftool-12.70.zip",
+        "install_method": "zip",
+        "description": "Metadata extraction tool",
+        "priority": "medium"
+      },
+      "binwalk": {
+        "install_method": "pip",
+        "package_name": "binwalk",
+        "description": "Firmware analysis tool",
+        "priority": "low"
+      }
+    },
+    
+    "strings_analysis": {
+      "floss": {
+        "url": "https://github.com/mandiant/flare-floss/releases/latest",
+        "install_method": "portable",
+        "description": "FireEye Labs Obfuscated String Solver",
+        "priority": "medium"
+      },
+      "strings": {
+        "install_method": "bundled_with_sysinternals",
+        "description": "Extract printable strings from files",
+        "priority": "high"
+      }
+    },
+    
+    "yara": {
+      "yara": {
+        "url": "https://github.com/VirusTotal/yara/releases/latest",
+        "install_method": "installer",
+        "description": "Pattern matching for malware identification",
+        "priority": "high",
+        "commands": {
+          "scan": "yara rules.yar sample.exe"
+        }
+      }
+    }
+  },
+  
+  "artifacts_to_capture": {
+    "memory": {
+      "enabled": true,
+      "tools": ["winpmem"],
+      "output_format": ".raw",
+      "priority": "high"
+    },
+    "network": {
+      "enabled": true,
+      "tools": ["tshark", "tcpdump"],
+      "output_format": ".pcap",
+      "capture_duration_seconds": 60,
+      "priority": "high"
+    },
+    "processes": {
+      "enabled": true,
+      "tools": ["tasklist", "procmon"],
+      "output_format": ".txt, .csv",
+      "priority": "high"
+    },
+    "registry": {
+      "enabled": true,
+      "tools": ["reg"],
+      "keys_to_export": [
+        "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"
+      ],
+      "output_format": ".reg",
+      "priority": "medium"
+    },
+    "filesystem": {
+      "enabled": true,
+      "tools": ["dir", "fsutil"],
+      "output_format": ".txt",
+      "priority": "medium"
+    },
+    "network_connections": {
+      "enabled": true,
+      "tools": ["netstat", "tcpview"],
+      "output_format": ".txt, .csv",
+      "priority": "high"
+    }
+  },
+  
+  "analysis_workflow": {
+    "phases": [
+      {
+        "phase": "1_preparation",
+        "steps": [
+          "Take VM snapshot",
+          "Install tools",
+          "Verify installations"
+        ]
+      },
+      {
+        "phase": "2_pre_execution",
+        "steps": [
+          "Start network capture",
+          "Start process monitoring",
+          "Baseline system state"
+        ]
+      },
+      {
+        "phase": "3_execution",
+        "steps": [
+          "Execute malware sample",
+          "Monitor behavior",
+          "Capture artifacts"
+        ],
+        "duration_seconds": 60
+      },
+      {
+        "phase": "4_post_execution",
+        "steps": [
+          "Stop all captures",
+          "Create memory dump",
+          "Export registry keys",
+          "Collect all artifacts"
+        ]
+      },
+      {
+        "phase": "5_analysis",
+        "steps": [
+          "Analyze memory dump",
+          "Parse network traffic",
+          "Review process activity",
+          "Identify IOCs"
+        ]
+      },
+      {
+        "phase": "6_reporting",
+        "steps": [
+          "Generate report",
+          "Summarize findings",
+          "List IOCs"
+        ]
+      }
+    ]
+  },
+  
+  "safety_settings": {
+    "require_vm": true,
+    "network_isolation": true,
+    "execution_timeout_seconds": 300,
+    "auto_cleanup": true,
+    "snapshot_before_execution": true
+  },
+  
+  "output_settings": {
+    "artifacts_directory": "./artifacts",
+    "reports_directory": "./reports",
+    "logs_directory": "./logs",
+    "timestamp_format": "%Y%m%d_%H%M%S",
+    "organize_by_date": true
+  }
+}

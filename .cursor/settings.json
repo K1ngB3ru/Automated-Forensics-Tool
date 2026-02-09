@@ -1,0 +1,91 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/Scripts/python.exe",
+    "python.terminal.activateEnvironment": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Args": [
+        "--max-line-length=120"
+    ],
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.pytest_cache": true,
+        "**/output": false,
+        "**/tools": false,
+        "**/dist": false,
+        "**/.git": true
+    },
+    "files.watcherExclude": {
+        "**/output/**": true,
+        "**/tools/**": true,
+        "**/downloads/**": true,
+        "**/dist/**": true,
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/.venv/**": true,
+        "**/venv/**": true
+    },
+    "search.exclude": {
+        "**/output": true,
+        "**/tools": true,
+        "**/downloads": true,
+        "**/dist": true,
+        "**/.venv": true,
+        "**/venv": true
+    },
+    "files.associations": {
+        "*.md": "markdown",
+        "*.json": "jsonc"
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
+    },
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "git.ignoreLimitWarning": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#1e1e1e",
+        "activityBar.foreground": "#ffffff"
+    },
+    "editor.minimap.enabled": true,
+    "editor.suggestSelection": "first",
+    "editor.wordWrap": "off",
+    "terminal.integrated.fontSize": 12,
+    "debug.console.fontSize": 12,
+    "editor.fontSize": 13,
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": false
+}

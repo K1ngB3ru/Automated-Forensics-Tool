@@ -1,0 +1,90 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🚀 Run Forensic Tool (Main)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/forensic_master.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "main",
+                "order": 1
+            }
+        },
+        {
+            "name": "🔧 Build Executable",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/build_executable.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}",
+            "presentation": {
+                "hidden": false,
+                "group": "build",
+                "order": 2
+            }
+        },
+        {
+            "name": "✅ Verify Installation",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/verify_installation.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}",
+            "presentation": {
+                "hidden": false,
+                "group": "test",
+                "order": 3
+            }
+        },
+        {
+            "name": "📦 Install Tools Only",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/install_tools.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}",
+            "presentation": {
+                "hidden": false,
+                "group": "setup",
+                "order": 4
+            }
+        },
+        {
+            "name": "🔍 Capture Artifacts Only",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/capture_artifacts.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--no-memory-dump"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "test",
+                "order": 5
+            }
+        },
+        {
+            "name": "🐛 Debug Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

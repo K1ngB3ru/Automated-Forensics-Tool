@@ -1,0 +1,43 @@
+# Core dependencies for Automated Forensic Analysis Tool
+# Install with: pip install -r requirements.txt
+
+# === ESSENTIAL DEPENDENCIES (Required) ===
+
+# System monitoring and process management
+psutil>=5.9.5
+
+# Windows Management Instrumentation
+WMI>=1.5.1
+
+# Windows-specific APIs (registry, event logs, etc.)
+pywin32>=305
+
+# For building executable
+pyinstaller>=5.13.0
+
+# === OPTIONAL DEPENDENCIES (For advanced features) ===
+
+# Memory Analysis (Week 2-3)
+volatility3>=2.5.0
+
+# Network Analysis
+scapy>=2.5.0
+
+# File Analysis
+pefile>=2023.2.7
+
+# YARA rules
+yara-python>=4.3.1
+
+# Data Processing and Reporting
+pandas>=2.0.0
+jinja2>=3.1.2
+
+# Utilities
+requests>=2.31.0
+colorama>=0.4.6
+
+# === BUILD DEPENDENCIES ===
+# For creating standalone executable
+setuptools>=68.0.0
+wheel>=0.41.0
