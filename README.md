@@ -1,12 +1,12 @@
-# 🔍 Automated Forensic Analysis Tool
+# 🔍 BitProbe — Scan
 
-**One-click malware analysis and forensic data collection for Windows systems**
+**Simplifying digital forensics through automated bit-level inspection.**
 
 ---
 
 ## 🎯 What This Tool Does
 
-This is an **all-in-one executable** that automatically:
+BitProbe — Scan is an **all-in-one executable** that automatically:
 
 1. ✅ Installs all forensic tools and dependencies
 2. ✅ Captures volatile system data (processes, network, logs, registry, browser history, memory)
@@ -24,7 +24,7 @@ This is an **all-in-one executable** that automatically:
 
 **Option A - Use Pre-built Executable (Recommended)**
 ```
-Download: ForensicAnalysisTool.exe
+Download: BitProbe-Scan.exe
 Location: Will be in dist/ folder after building
 ```
 
@@ -36,7 +36,7 @@ python build_executable.py
 ### Step 2: Run on Target System
 
 ```
-1. Copy ForensicAnalysisTool.exe to target system
+1. Copy BitProbe-Scan.exe to target system
 2. Right-click → "Run as Administrator"
 3. Wait 2-5 minutes for completion
 ```
@@ -147,7 +147,7 @@ pip install pyinstaller
 # Build
 python build_executable.py
 
-# Output: dist/ForensicAnalysisTool.exe
+# Output: dist/BitProbe-Scan.exe
 ```
 
 ---

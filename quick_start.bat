@@ -75,7 +75,7 @@ if %errorLevel% == 0 (
 )
 
 echo.
-echo [STEP 5/5] Running Forensic Analysis Tool...
+echo [STEP 5/5] Running BitProbe — Scan...
 echo.
 echo ========================================================================
 echo.

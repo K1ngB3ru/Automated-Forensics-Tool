@@ -1,12 +1,12 @@
 """
-Build Script to Create Standalone Executable
-Uses PyInstaller to package everything into a single .exe file
+BitProbe — Scan: Build Script
+Create Standalone Executable using PyInstaller
 
 Usage:
     python build_executable.py
     
 Output:
-    dist/ForensicTool.exe - Standalone executable
+    dist/BitProbe-Scan.exe - Standalone executable
 """
 
 import os
@@ -83,7 +83,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='ForensicAnalysisTool',
+    name='BitProbe-Scan',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -137,7 +137,7 @@ def build_executable():
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=PROJECT_ROOT)
         
         if result.returncode == 0:
-            exe_path = PROJECT_ROOT / 'dist' / 'ForensicAnalysisTool.exe'
+            exe_path = PROJECT_ROOT / 'dist' / 'BitProbe-Scan.exe'
             if exe_path.exists():
                 size_mb = exe_path.stat().st_size / (1024*1024)
                 print(f"\n{'='*60}")
@@ -146,7 +146,7 @@ def build_executable():
                 print(f"\nExecutable Location: {exe_path.absolute()}")
                 print(f"File Size: {size_mb:.2f} MB")
                 print(f"\nUsage:")
-                print(f"  1. Copy ForensicAnalysisTool.exe to target system")
+                print(f"  1. Copy BitProbe-Scan.exe to target system")
                 print(f"  2. Run as Administrator")
                 print(f"  3. All dependencies will be installed automatically")
                 print(f"  4. Artifacts and reports will be generated")
@@ -174,7 +174,7 @@ def create_simple_build():
     cmd = [
         'pyinstaller',
         '--onefile',
-        '--name=ForensicAnalysisTool',
+        '--name=BitProbe-Scan',
         '--uac-admin',
         '--console',
         '--clean',

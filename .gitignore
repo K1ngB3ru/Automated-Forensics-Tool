@@ -101,7 +101,7 @@ coverage.xml
 
 # Compiled executables
 *.exe
-!dist/ForensicAnalysisTool.exe
+!dist/BitProbe-Scan.exe
 
 # Windows installer files
 *.msi

@@ -10,14 +10,14 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding='utf-8')
 
 setup(
-    name="forensic-analysis-tool",
+    name="bitprobe-scan",
     version="1.0.0",
     author="MetaProbe Team",
     author_email="your.email@example.com",
-    description="Automated Malware Analysis & Forensic Data Collection Tool",
+    description="BitProbe — Scan: Simplifying digital forensics through automated bit-level inspection",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/forensic-analysis-tool",
+    url="https://github.com/K1ngB3ru/Automated-Forensics-Tool",
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     classifiers=[
@@ -57,8 +57,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'forensic-tool=forensic_master:main',
-            'forensic-build=build_executable:main',
+            'bitprobe=forensic_master:main',
+            'bitprobe-build=build_executable:main',
         ],
     },
     include_package_data=True,
@@ -66,8 +66,8 @@ setup(
         '': ['*.json', '*.ini', '*.md'],
     },
     project_urls={
-        'Documentation': 'https://github.com/yourusername/forensic-analysis-tool/wiki',
-        'Source': 'https://github.com/yourusername/forensic-analysis-tool',
-        'Tracker': 'https://github.com/yourusername/forensic-analysis-tool/issues',
+        'Documentation': 'https://github.com/K1ngB3ru/Automated-Forensics-Tool/wiki',
+        'Source': 'https://github.com/K1ngB3ru/Automated-Forensics-Tool',
+        'Tracker': 'https://github.com/K1ngB3ru/Automated-Forensics-Tool/issues',
     },
 )

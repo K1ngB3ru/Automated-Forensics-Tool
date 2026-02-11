@@ -1,6 +1,6 @@
 """
-Automated Malware Analysis & Forensic Tool
-Main Orchestration Script - All-in-One Solution
+BitProbe — Scan
+Digital Forensics Analysis Tool - Main Orchestration Script
 
 This script:
 1. Installs all dependencies and tools
@@ -8,6 +8,8 @@ This script:
 3. Generates individual reports from each tool
 4. Compiles everything into a master report
 5. Stores everything in organized folders
+
+Tagline: Simplifying digital forensics through automated bit-level inspection
 
 Author: MetaProbe Team
 Version: 1.0

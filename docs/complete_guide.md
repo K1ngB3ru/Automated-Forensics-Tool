@@ -1,8 +1,8 @@
-# Complete Forensic Analysis Tool - Project Guide
+# BitProbe — Scan - Complete Project Guide
 
 ## 📋 Project Overview
 
-This is an **all-in-one automated malware analysis and forensic tool** that:
+BitProbe — Scan is an **all-in-one automated malware analysis and forensic tool** that:
 
 1. ✅ **Automatically installs** all required dependencies and tools
 2. ✅ **Captures volatile data**: processes, network, logs, registry, browser history, memory
@@ -38,7 +38,7 @@ This is an **all-in-one automated malware analysis and forensic tool** that:
 ## 📂 Project Structure
 
 ```
-forensic-analysis-tool/
+bitprobe-scan/
 ├── forensic_master.py          ← Main orchestration script
 ├── capture_artifacts.py        ← Data collection module
 ├── install_tools.py            ← Tool installation script
@@ -77,7 +77,7 @@ forensic-analysis-tool/
 # Download from python.org
 
 # Step 2: Clone or download project files
-cd forensic-analysis-tool
+cd bitprobe-scan
 
 # Step 3: Install dependencies
 pip install -r requirements.txt
@@ -93,7 +93,7 @@ python forensic_master.py
 python build_executable.py
 
 # Step 2: Find the executable
-# Location: dist/ForensicAnalysisTool.exe
+# Location: dist/BitProbe-Scan.exe
 
 # Step 3: Deploy to target system
 # Just copy the .exe file - no installation needed!
@@ -105,9 +105,9 @@ python build_executable.py
 ### Option 3: Use Pre-built Executable (Recommended for Field Use)
 
 ```
-1. Copy ForensicAnalysisTool.exe to USB drive
+1. Copy BitProbe-Scan.exe to USB drive
 2. Insert USB into target system
-3. Run ForensicAnalysisTool.exe as Administrator
+3. Run BitProbe-Scan.exe as Administrator
 4. Wait for analysis to complete
 5. Collect generated reports from reports/master/ folder
 ```

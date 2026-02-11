@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-# Quick Start Script for Forensic Analysis Tool (Linux)
+# Quick Start Script for BitProbe — Scan (Linux)
 # Automatically sets up environment and runs the tool
 ################################################################################
 
@@ -14,7 +14,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 echo -e "${CYAN}========================================================================"
-echo -e "           FORENSIC ANALYSIS TOOL - QUICK START"
+echo -e "           BITPROBE \u2014 SCAN - QUICK START"
 echo -e "========================================================================${NC}"
 echo ""
 
