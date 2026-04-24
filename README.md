@@ -44,10 +44,13 @@ python build_executable.py
 ### Step 3: Collect Reports
 
 ```
-Output locations:
+Output locations (project root when you run the tool):
 📁 reports/master/MASTER_FORENSIC_REPORT_[timestamp].txt
 📁 reports/individual/ (all individual reports)
-📁 artifacts/ (raw data: memory dumps, logs, etc.)
+📁 artifacts/ (raw data: memory dumps, PCAPs, etc.)
+📁 logs/ (run and install logs)
+📁 downloads/ (installer files cached during tool setup)
+📁 tools/ (Sysinternals, Ghidra, WinPMEM — created by installer)
 ```
 
 ---
@@ -81,7 +84,7 @@ Output locations:
 ```
 ╔═══════════════════════════════════════════════════════════╗
 ║                                                           ║
-║          MASTER FORENSIC ANALYSIS REPORT                  ║
+║            MASTER FORENSIC ANALYSIS REPORT                ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
 
@@ -132,38 +135,41 @@ Handle responsibly!
 
 ### Run as Python Script
 ```bash
-# Install dependencies
-pip install psutil wmi pywin32
-
-# Run
-python forensic_master.py
+# From repository root, after pip install -r requirements.txt
+python src/forensic_master.py
 ```
 
 ### Build Executable
 ```bash
-# Install PyInstaller
 pip install pyinstaller
-
-# Build
-python build_executable.py
+python src/build_executable.py
 
 # Output: dist/BitProbe-Scan.exe
 ```
 
 ---
 
-## 📂 Project Files
+## 📂 Project layout
 
 ```
-forensic-analysis-tool/
-├── forensic_master.py          # Main orchestration
-├── capture_artifacts.py        # Data collection
-├── install_tools.py            # Tool installation
-├── build_executable.py         # EXE builder
-├── requirements.txt            # Dependencies
-├── COMPLETE_PROJECT_GUIDE.md   # Full documentation
-└── README.md                   # This file
+BitProbe/
+├── src/                    # Application code (forensic_master, capture_artifacts, …)
+├── tests/                  # Pytest / unittest suite
+├── config/                 # settings.ini, tools_config.json
+├── rules/                  # YARA rules (malware_rules.yar)
+├── scripts/                # Optional helpers (verify_installation, cross-platform install)
+├── docs/                   # Guides
+├── artifacts/              # Created at runtime (gitignored)
+├── reports/                # individual/ + master/ (gitignored)
+├── logs/                   # Run logs (gitignored)
+├── downloads/              # Cached installers (gitignored)
+├── tools/                  # Sysinternals, Ghidra, WinPMEM (gitignored)
+├── requirements.txt
+├── setup.py
+└── README.md
 ```
+
+If you still have an old `output/` folder from a previous layout, you can move its contents into the folders above (matching names) and then remove `output/`.
 
 ---
 
@@ -193,16 +199,7 @@ To skip: Edit capture_artifacts.py and comment out memory dump
 
 ---
 
-## 📅 Week 1 Goals (Nov 3-9)
-
-- [x] Day 1-2: Setup and test Python scripts
-- [x] Day 3-4: Build standalone executable
-- [x] Day 5-6: Test on different systems
-- [x] Day 7: Documentation and demo prep
-
----
-
-## 🎓 For Your College Project
+##🎓 For Your College Project
 
 ### What to Submit
 1. ✅ Source code (all .py files)
@@ -217,14 +214,6 @@ To skip: Edit capture_artifacts.py and comment out memory dump
 3. Open the master report
 4. Highlight key findings
 5. Discuss use cases (incident response, malware analysis)
-
-### Comparison with TraceHunt
-Your tool improves on TraceHunt by:
-- ✅ Full automation (no manual setup)
-- ✅ Standalone executable
-- ✅ Comprehensive reporting
-- ✅ Memory dump capability
-- ✅ Multi-browser support
 
 ---
 
@@ -246,19 +235,6 @@ Your tool improves on TraceHunt by:
 
 ---
 
-## ✅ Status: Week 1 Complete!
-
-You now have:
-- ✅ Working Python scripts
-- ✅ Executable build system
-- ✅ Comprehensive documentation
-- ✅ Sample outputs
-- ✅ Ready for Week 2 enhancements
-
-**Next Steps:** Test thoroughly, then move to Week 2 (automated analysis and IOC detection)
-
----
-
 **Questions?** Check `COMPLETE_PROJECT_GUIDE.md` for detailed troubleshooting!
 
-**Good luck with your project! 🚀**
+---

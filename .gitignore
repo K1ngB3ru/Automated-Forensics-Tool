@@ -7,7 +7,6 @@ __pycache__/
 build/
 develop-eggs/
 dist/
-downloads/
 eggs/
 .eggs/
 lib/
@@ -33,10 +32,12 @@ env/
 *.manifest
 *.spec
 
-# Output directories (contain large files)
-output/
-tools/
+# Runtime output (created when you run the tool)
+artifacts/
+reports/
+logs/
 downloads/
+tools/
 temp/
 tmp/
 
@@ -49,8 +50,6 @@ tmp/
 *.mem
 *.vmem
 
-# Logs
-logs/
 *.log
 
 # OS specific

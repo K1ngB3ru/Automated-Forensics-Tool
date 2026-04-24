@@ -1,36 +1,22 @@
 #!/bin/bash
 
-################################################################################
-# Automated Forensic & Malware Analysis Tool Installation Script (Linux)
-# Author: Cybersecurity Project
-# Description: Downloads and installs forensic/analysis tools for Linux
-# Requirements: Root/sudo privileges, Ubuntu/Debian-based system
-################################################################################
+set -e
 
-set -e  # Exit on error
-
-# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Configuration
 TOOLS_DIR="./tools"
 DOWNLOADS_DIR="./downloads"
 LOGS_DIR="./logs"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 LOG_FILE="${LOGS_DIR}/installation_${TIMESTAMP}.log"
 
-# Tool versions
 VOLATILITY3_VERSION="2.5.0"
 GHIDRA_VERSION="10.4"
-
-################################################################################
-# Functions
-################################################################################
 
 log() {
     local level=$1
@@ -158,7 +144,6 @@ install_volatility3() {
         return 1
     }
     
-    # Verify installation
     if python3 -c "import volatility3" 2>/dev/null; then
         log_success "Volatility 3 installed successfully"
         return 0
@@ -175,7 +160,6 @@ install_ghidra() {
     local download_path="${DOWNLOADS_DIR}/ghidra.zip"
     local install_path="${TOOLS_DIR}/ghidra"
     
-    # Check for Java
     if ! command -v java &> /dev/null; then
         log_info "Java not found, installing OpenJDK 17..."
         apt-get install -y openjdk-17-jdk >> "${LOG_FILE}" 2>&1 || {
@@ -227,7 +211,6 @@ install_radare2() {
     }
     cd - > /dev/null
     
-    # Verify installation
     if command -v radare2 &> /dev/null; then
         log_success "Radare2 installed successfully"
         return 0
@@ -379,21 +362,16 @@ EOF
 main() {
     print_header "AUTOMATED FORENSIC TOOLS INSTALLATION (Linux)"
     
-    # Check prerequisites
     check_root
     check_internet || exit 1
     
-    # Initialize
     create_directories
     log_info "Starting automated tool installation"
     
-    # Update system
     update_system
     
-    # Track results
     declare -A results
     
-    # Install tools
     install_system_dependencies && results[SystemDeps]="SUCCESS" || results[SystemDeps]="FAILED"
     install_volatility3 && results[Volatility3]="SUCCESS" || results[Volatility3]="FAILED"
     install_ghidra && results[Ghidra]="SUCCESS" || results[Ghidra]="FAILED"
@@ -403,10 +381,8 @@ main() {
     install_network_tools && results[NetworkTools]="SUCCESS" || results[NetworkTools]="FAILED"
     install_forensic_tools && results[ForensicTools]="SUCCESS" || results[ForensicTools]="FAILED"
     
-    # Verify installations
     verify_installations
     
-    # Generate report
     print_header "INSTALLATION SUMMARY"
     
     local report_content=""
@@ -430,5 +406,4 @@ main() {
     log_info "Installation process completed"
 }
 
-# Execute main function
 main "$@"

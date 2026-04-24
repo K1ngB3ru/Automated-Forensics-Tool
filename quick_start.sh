@@ -1,24 +1,18 @@
 #!/bin/bash
 
-################################################################################
-# Quick Start Script for BitProbe — Scan (Linux)
-# Automatically sets up environment and runs the tool
-################################################################################
 
-# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
 echo -e "${CYAN}========================================================================"
 echo -e "           BITPROBE \u2014 SCAN - QUICK START"
 echo -e "========================================================================${NC}"
 echo ""
 
-# Check for root privileges
 if [[ $EUID -ne 0 ]]; then
    echo -e "${RED}[ERROR] This script must be run as root or with sudo${NC}"
    echo "Please run: sudo ./quick_start.sh"
@@ -87,7 +81,7 @@ echo -e "                      EXECUTION COMPLETED"
 echo -e "========================================================================${NC}"
 echo ""
 echo "Check the following directories for output:"
-echo "  - Reports: output/reports/master/"
-echo "  - Artifacts: output/artifacts/"
-echo "  - Logs: output/logs/"
+echo "  - Reports: reports/master/"
+echo "  - Artifacts: artifacts/"
+echo "  - Logs: logs/"
 echo ""

@@ -1,9 +1,5 @@
 @echo off
 cd /d "%~dp0"
-REM ========================================================================
-REM Quick Start Script for Forensic Analysis Tool
-REM Automatically sets up environment and runs the tool
-REM ========================================================================
 
 echo.
 echo ========================================================================
@@ -11,7 +7,6 @@ echo           FORENSIC ANALYSIS TOOL - QUICK START
 echo ========================================================================
 echo.
 
-REM Check for Administrator privileges
 net session >nul 2>&1
 if %errorLevel% == 0 (
     echo [OK] Running with Administrator privileges
@@ -88,8 +83,8 @@ echo                      EXECUTION COMPLETED
 echo ========================================================================
 echo.
 echo Check the following directories for output:
-echo   - Reports: output\reports\master\
-echo   - Artifacts: output\artifacts\
-echo   - Logs: output\logs\
+echo   - Reports: reports\master\
+echo   - Artifacts: artifacts\
+echo   - Logs: logs\
 echo.
 pause

@@ -1,13 +1,3 @@
-"""
-BitProbe — Scan: Build Script
-Create Standalone Executable using PyInstaller
-
-Usage:
-    python build_executable.py
-    
-Output:
-    dist/BitProbe-Scan.exe - Standalone executable
-"""
 
 import os
 import sys
@@ -15,12 +5,10 @@ import subprocess
 import importlib.util
 from pathlib import Path
 
-# Get project root directory (parent of src directory)
 PROJECT_ROOT = Path(__file__).parent.parent
 SRC_DIR = Path(__file__).parent
 
 def check_pyinstaller():
-    """Check if PyInstaller is installed"""
     spec = importlib.util.find_spec("PyInstaller")
     if spec is not None:
         print("✓ PyInstaller is installed")
@@ -33,16 +21,14 @@ def check_pyinstaller():
         return True
 
 def create_spec_file():
-    """Create PyInstaller spec file for custom build"""
-    # Use absolute paths for source files
+
     forensic_master = str(SRC_DIR / 'forensic_master.py')
     install_tools = str(SRC_DIR / 'install_tools.py')
     capture_artifacts = str(SRC_DIR / 'capture_artifacts.py')
     icon_path = str(PROJECT_ROOT / 'icon.ico') if (PROJECT_ROOT / 'icon.ico').exists() else None
     icon_line = f"    icon=r'{icon_path}'," if icon_path else "    icon=None,"
-    
+
     spec_content = f"""
-# -*- mode: python ; coding: utf-8 -*-
 
 block_cipher = None
 
@@ -57,7 +43,6 @@ a = Analysis(
     hiddenimports=[
         'psutil',
         'wmi',
-        'pywin32',
         'win32com',
         'win32api',
         'win32con',
@@ -97,33 +82,29 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
 {icon_line}
-    uac_admin=True,  # Request admin privileges
+    uac_admin=True,
 )
 """
-    
+
     spec_file = PROJECT_ROOT / 'forensic_tool.spec'
     with open(spec_file, 'w') as f:
         f.write(spec_content)
-    
+
     print("✓ Spec file created")
 
 def build_executable():
-    """Build the executable using PyInstaller"""
     print("\n" + "="*60)
     print("Building Forensic Analysis Tool Executable")
     print("="*60 + "\n")
-    
-    # Check dependencies
+
     if not check_pyinstaller():
         print("✗ Failed to install PyInstaller")
         return False
-    
-    # Create spec file
+
     create_spec_file()
-    
-    # Build using spec file
+
     print("\nBuilding executable (this may take a few minutes)...")
-    
+
     try:
         spec_file = PROJECT_ROOT / 'forensic_tool.spec'
         cmd = [
@@ -132,10 +113,9 @@ def build_executable():
             '--noconfirm',
             str(spec_file)
         ]
-        
-        # Run from project root directory
+
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=PROJECT_ROOT)
-        
+
         if result.returncode == 0:
             exe_path = PROJECT_ROOT / 'dist' / 'BitProbe-Scan.exe'
             if exe_path.exists():
@@ -158,19 +138,18 @@ def build_executable():
             print(f"✗ Build failed")
             print(f"Error: {result.stderr}")
             return False
-            
+
     except Exception as e:
         print(f"✗ Build error: {e}")
         return False
 
 def create_simple_build():
-    """Simple build command without spec file"""
     print("\nAttempting simple build...")
-    
+
     forensic_master = SRC_DIR / 'forensic_master.py'
     install_tools = SRC_DIR / 'install_tools.py'
     capture_artifacts = SRC_DIR / 'capture_artifacts.py'
-    
+
     cmd = [
         'pyinstaller',
         '--onefile',
@@ -186,11 +165,11 @@ def create_simple_build():
         '--hidden-import=winreg',
         str(forensic_master)
     ]
-    
+
     try:
-        # Run from project root directory
+
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=PROJECT_ROOT)
-        
+
         if result.returncode == 0:
             print("✓ Simple build successful")
             return True
@@ -205,17 +184,17 @@ if __name__ == "__main__":
     print("""
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
-║         FORENSIC ANALYSIS TOOL - EXECUTABLE BUILDER         ║
+║         FORENSIC ANALYSIS TOOL - EXECUTABLE BUILDER          ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
     """)
-    
+
     success = build_executable()
-    
+
     if not success:
         print("\nTrying alternative build method...")
         success = create_simple_build()
-    
+
     if success:
         print("\n✓ Build complete! Check the 'dist' folder.")
     else:
@@ -224,5 +203,5 @@ if __name__ == "__main__":
         print("  1. Ensure all Python scripts are in the src/ directory")
         print("  2. Install missing packages: pip install -r requirements.txt")
         print("  3. Try running from project root: python src/build_executable.py")
-    
+
     sys.exit(0 if success else 1)
