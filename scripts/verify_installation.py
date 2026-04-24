@@ -88,7 +88,7 @@ def check_directory_structure():
     required_dirs = [
         (TOOLS_DIR, "tools/ (Sysinternals, Ghidra, etc.)"),
         (DOWNLOADS_DIR, "downloads/"),
-        (LOGS_DIR, "logs/"),
+        (LOGS_DIR, "artifacts/logs/"),
         (ARTIFACTS_DIR, "artifacts/"),
         (REPORTS_DIR, "reports/"),
     ]

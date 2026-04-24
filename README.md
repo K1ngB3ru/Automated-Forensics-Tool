@@ -48,7 +48,7 @@ Output locations (project root when you run the tool):
 📁 reports/master/MASTER_FORENSIC_REPORT_[timestamp].txt
 📁 reports/individual/ (all individual reports)
 📁 artifacts/ (raw data: memory dumps, PCAPs, etc.)
-📁 logs/ (run and install logs)
+📁 artifacts/logs/ (run and install logs)
 📁 downloads/ (installer files cached during tool setup)
 📁 tools/ (Sysinternals, Ghidra, WinPMEM — created by installer)
 ```
@@ -160,8 +160,9 @@ BitProbe/
 ├── scripts/                # Optional helpers (verify_installation, cross-platform install)
 ├── docs/                   # Guides
 ├── artifacts/              # Created at runtime (gitignored)
+│   ├── logs/               # Run and install logs
+│   └── ...                 # memory/, network/, processes/, etc.
 ├── reports/                # individual/ + master/ (gitignored)
-├── logs/                   # Run logs (gitignored)
 ├── downloads/              # Cached installers (gitignored)
 ├── tools/                  # Sysinternals, Ghidra, WinPMEM (gitignored)
 ├── requirements.txt
@@ -182,7 +183,7 @@ Solution: Right-click .exe → "Run as Administrator"
 
 ### "Module not found: psutil"
 ```
-Solution: pip install psutil wmi pywin32
+Solution: pip install psutil wmi pywin32 yara-python
 ```
 
 ### Browser history is empty

@@ -85,6 +85,6 @@ echo.
 echo Check the following directories for output:
 echo   - Reports: reports\master\
 echo   - Artifacts: artifacts\
-echo   - Logs: logs\
+echo   - Logs: artifacts\logs\
 echo.
 pause

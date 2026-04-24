@@ -16,7 +16,7 @@ BitProbe — Scan is an **all-in-one automated malware analysis and forensic too
 
 ### Automated Installation
 - Auto-detects missing dependencies
-- Installs Python packages (psutil, wmi, pywin32)
+- Installs Python packages (psutil, wmi, pywin32, volatility3, yara-python)
 - Downloads and installs forensic tools (Sysinternals, Wireshark, WinPMEM)
 
 ### Comprehensive Artifact Capture
@@ -39,10 +39,10 @@ BitProbe — Scan is an **all-in-one automated malware analysis and forensic too
 
 ```
 bitprobe-scan/
-├── forensic_master.py          ← Main orchestration script
-├── capture_artifacts.py        ← Data collection module
-├── install_tools.py            ← Tool installation script
-├── build_executable.py         ← EXE builder script
+├── src/forensic_master.py      ← Main orchestration script
+├── src/capture_artifacts.py    ← Data collection module
+├── src/install_tools.py        ← Tool installation script
+├── src/build_executable.py     ← EXE builder script
 ├── requirements.txt            ← Python dependencies
 ├── README.md                   ← Quick start guide
 │
@@ -63,7 +63,7 @@ bitprobe-scan/
 │   ├── individual/             ← Individual tool reports
 │   └── master/                 ← Compiled master reports
 │
-└── logs/                       ← Execution logs
+└── artifacts/logs/             ← Execution and installation logs
 ```
 
 ---
@@ -83,14 +83,14 @@ cd bitprobe-scan
 pip install -r requirements.txt
 
 # Step 4: Run as Administrator
-python forensic_master.py
+python src/forensic_master.py
 ```
 
 ### Option 2: Build Standalone Executable
 
 ```bash
 # Step 1: Build the EXE
-python build_executable.py
+python src/build_executable.py
 
 # Step 2: Find the executable
 # Location: dist/BitProbe-Scan.exe
@@ -127,7 +127,7 @@ python build_executable.py
 ### Phase 2: Dependency Installation
 ```
 [PHASE 1] Installing Dependencies
-  → Checks Python packages (psutil, wmi, pywin32)
+  → Checks Python packages (psutil, wmi, pywin32, volatility3, yara-python)
   → Auto-installs missing packages
   → Verifies installations
 ```
@@ -435,7 +435,7 @@ Disk: ~500 MB - 8 GB (with memory dump)
 ### For Issues
 ```
 1. Check troubleshooting section
-2. Review logs/ directory for detailed errors
+2. Review artifacts/logs/ directory for detailed errors
 3. Test on clean VM environment
 4. Check Windows Event Viewer for system errors
 ```
