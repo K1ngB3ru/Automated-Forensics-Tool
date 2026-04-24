@@ -135,7 +135,23 @@ def check_network_tools():
 
     results = []
 
-    results.append(check_command("tshark", "TShark (Wireshark CLI)"))
+    tshark_path = shutil.which("tshark")
+    if not tshark_path and sys.platform.startswith('win'):
+        common_tshark_paths = [
+            Path("C:/Program Files/Wireshark/tshark.exe"),
+            Path("C:/Program Files (x86)/Wireshark/tshark.exe"),
+        ]
+        for path in common_tshark_paths:
+            if path.exists():
+                tshark_path = str(path)
+                break
+
+    if tshark_path:
+        print_success(f"Command-line tool: TShark (Wireshark CLI): {tshark_path}")
+        results.append(True)
+    else:
+        print_error("Command-line tool: TShark (Wireshark CLI) (Not found in PATH/common locations)")
+        results.append(False)
 
     if sys.platform.startswith('linux'):
         results.append(check_command("tcpdump", "TCPDump"))

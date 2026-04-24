@@ -149,9 +149,18 @@ def install_pip_package(package_name):
         return False
 
 def verify_tool_installation(tool_name):
+    def check_wireshark():
+        if shutil.which("tshark"):
+            return True
+        common_tshark_paths = [
+            Path("C:/Program Files/Wireshark/tshark.exe"),
+            Path("C:/Program Files (x86)/Wireshark/tshark.exe"),
+        ]
+        return any(path.exists() for path in common_tshark_paths)
+
     verification_commands = {
         "sysinternals": lambda: (TOOLS_DIR / "sysinternals" / "procmon.exe").exists(),
-        "wireshark": lambda: shutil.which("tshark") is not None,
+        "wireshark": check_wireshark,
         "winpmem": lambda: (TOOLS_DIR / "winpmem" / "winpmem_mini_x64_rc2.exe").exists(),
         "volatility": lambda: subprocess.run(
             [sys.executable, "-m", "pip", "show", "volatility3"],
