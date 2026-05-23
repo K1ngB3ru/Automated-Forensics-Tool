@@ -88,7 +88,7 @@ Output locations (project root when you run the tool):
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
 
-Report Generated: 2024-11-03 14:30:22
+Report Generated: 2025-11-03 14:30:22
 Analysis Duration: 3.2 minutes
 Total Individual Reports: 7
 
