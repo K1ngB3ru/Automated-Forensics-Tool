@@ -8,11 +8,11 @@
 
 BitProbe — Scan is an **all-in-one executable** that automatically:
 
-1. ✅ Installs all forensic tools and dependencies
-2. ✅ Captures volatile system data (processes, network, logs, registry, browser history, memory)
-3. ✅ Generates individual reports from each tool
-4. ✅ Compiles everything into a master forensic report
-5. ✅ Organizes all output in timestamped folders
+1.  Installs all forensic tools and dependencies ✅
+2.  Captures volatile system data (processes, network, logs, registry, browser history, memory) ✅
+3.  Generates individual reports from each tool ✅
+4.  Compiles everything into a master forensic report ✅
+5.  Organizes all output in timestamped folders ✅
 
 **No manual setup required!** Just run the .exe and collect your reports.
 
@@ -107,7 +107,7 @@ TABLE OF CONTENTS
 
 ---
 
-## ⚠️ Important Warnings
+## Important Warnings
 
 ### Must Run as Administrator
 The tool requires admin privileges to access system logs, registry, and create memory dumps.
@@ -200,7 +200,7 @@ To skip: Edit capture_artifacts.py and comment out memory dump
 
 ---
 
-## 📚 Learn More
+## Learn More
 
 - [Complete Project Guide](COMPLETE_PROJECT_GUIDE.md) - Detailed documentation
 - [NIST Computer Forensics](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-86.pdf)
@@ -208,7 +208,7 @@ To skip: Edit capture_artifacts.py and comment out memory dump
 
 ---
 
-## 📝 License & Ethics
+## License & Ethics
 
 **Educational Use Only**
 - For learning and research purposes
