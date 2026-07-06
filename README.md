@@ -1,10 +1,10 @@
-# 🔍 BitProbe — Scan
+# BitProbe — Scan
 
 **Simplifying digital forensics through automated bit-level inspection.**
 
 ---
 
-## 🎯 What This Tool Does
+## What This Tool Does
 
 BitProbe — Scan is an **all-in-one executable** that automatically:
 
@@ -18,7 +18,7 @@ BitProbe — Scan is an **all-in-one executable** that automatically:
 
 ---
 
-## 🚀 Quick Start (3 Steps)
+## Quick Start (3 Steps)
 
 ### Step 1: Get the Tool
 
@@ -55,7 +55,7 @@ Output locations (project root when you run the tool):
 
 ---
 
-## 📋 System Requirements
+## System Requirements
 
 - **OS:** Windows 10/11 (64-bit)
 - **Privileges:** Administrator required
@@ -64,7 +64,7 @@ Output locations (project root when you run the tool):
 
 ---
 
-## 📊 What Gets Captured
+## What Gets Captured
 
 | Category | Details |
 |----------|---------|
@@ -78,7 +78,7 @@ Output locations (project root when you run the tool):
 
 ---
 
-## 🖥️ Example Output
+## Example Output
 
 ### Master Report Structure
 ```
@@ -109,19 +109,19 @@ TABLE OF CONTENTS
 
 ## ⚠️ Important Warnings
 
-### 🔴 Must Run as Administrator
+### Must Run as Administrator
 The tool requires admin privileges to access system logs, registry, and create memory dumps.
 
-### 🔴 Antivirus May Flag It
+### Antivirus May Flag It
 Memory capture and system access can trigger antivirus. Add exception if needed.
 
-### 🔴 Use in VM for Malware Analysis
+### Use in VM for Malware Analysis
 **NEVER** run malware on your production system. Always use isolated VMs:
 - Take snapshot before execution
 - Disconnect from network
 - Use Host-Only network adapter
 
-### 🔴 Data Privacy
+### Data Privacy
 Captured data includes:
 - Browser history (URLs, searches)
 - Running processes (may contain sensitive data)
@@ -131,7 +131,7 @@ Handle responsibly!
 
 ---
 
-## 🛠️ Development Mode
+## Development Mode
 
 ### Run as Python Script
 ```bash
@@ -149,7 +149,7 @@ python src/build_executable.py
 
 ---
 
-## 📂 Project layout
+## Project layout
 
 ```
 BitProbe/
@@ -174,7 +174,7 @@ If you still have an old `output/` folder from a previous layout, you can move i
 
 ---
 
-## 🐛 Common Issues
+## Common Issues
 
 ### "Not running as administrator"
 ```
@@ -197,24 +197,6 @@ Solution: Close all browsers before running
 Normal: Can take 5-10 minutes depending on RAM size
 To skip: Edit capture_artifacts.py and comment out memory dump
 ```
-
----
-
-##🎓 For Your College Project
-
-### What to Submit
-1. ✅ Source code (all .py files)
-2. ✅ Executable (.exe file)
-3. ✅ Sample reports (generated output)
-4. ✅ Documentation (this guide + technical details)
-5. ✅ Presentation slides
-
-### Demo Tips
-1. Show the .exe running (2-3 minutes)
-2. Explain each phase of execution
-3. Open the master report
-4. Highlight key findings
-5. Discuss use cases (incident response, malware analysis)
 
 ---
 
